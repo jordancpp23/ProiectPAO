@@ -26,4 +26,7 @@ public class Bibliotecar extends Persoana{
     public void setOre_lucrate(Integer ore_lucrate) {
         this.ore_lucrate = ore_lucrate;
     }
+    public int compareTo(Client client) {
+        return 0;
+    }
 }

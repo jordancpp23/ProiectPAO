@@ -1,11 +1,13 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Biblioteca {
     private static Biblioteca instance = null;
     private List<Articol> articole = new ArrayList<Articol>();
-    private List<Client> clienti = new ArrayList<Client>();
+    private TreeSet<Client> clienti = new TreeSet<Client>();
+
     private List<Bibliotecar> bibliotecari = new ArrayList<Bibliotecar>();
+
+    private List<Autor> autori = new ArrayList<Autor>();
     private Biblioteca() {
     }
     public static Biblioteca getInstance() {
@@ -16,7 +18,7 @@ public class Biblioteca {
     public List<Articol> getArticole() {
         return articole;
     }
-    public List<Client> getClienti() {
+    public TreeSet<Client> getClienti() {
         return clienti;
     }
     public List<Bibliotecar> getBibliotecari() {
@@ -48,5 +50,52 @@ public class Biblioteca {
                 dvds.add((DVD)articol);
         }
         return dvds;
+    }
+    public void removeArticol(Articol articol) {
+        articole.remove(articol);
+    }
+    public void showCarti() {
+        for (Carte carte : getCarti()) {
+            System.out.println(carte);
+        }
+    }
+    public void addCarte(Carte carte) {
+        articole.add(carte);
+    }
+    public void showDVDs() {
+        for (DVD dvd : getDVDs()) {
+            System.out.println(dvd);
+        }
+    }
+
+    public Boolean esteBibliotecar(String username, Integer idBibliotecar) {
+        for (Bibliotecar bibliotecar : bibliotecari) {
+            if (bibliotecar.getNume().equals(username) && bibliotecar.getIdBibliotecar().equals(idBibliotecar))
+                return true;
+        }
+        return false;
+    }
+
+    public void addDVD(DVD dvd) {
+        articole.add(dvd);
+    }
+
+    public void showClientiCuCevaImprumutat() {
+        boolean ok = false;
+        for (Client client : clienti) {
+            if (client.getArticole_imprumutate().size() > 0) {
+                System.out.println(client);
+                ok = true;
+            }
+        }
+        if (!ok)
+            System.out.println("Nu exista clienti cu ceva imprumutat");
+    }
+
+    public List<Autor> getAutori() {
+        return autori;
+    }
+    public void addAutor(Autor autor) {
+        autori.add(autor);
     }
 }

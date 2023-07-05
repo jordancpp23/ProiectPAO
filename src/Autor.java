@@ -39,5 +39,7 @@ public class Autor extends Persoana{
     public String toString() {
         return super.toString() + "\nID Autor: " + idAutor + "\nGen principal: " + gen_principal + "\nMagnum opus: " + magnum_opus + "\nAni activitate: " + ani_activitate;
     }
-
+    public int compareTo(Client client) {
+        return 0;
+    }
 }

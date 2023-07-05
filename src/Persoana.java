@@ -1,4 +1,4 @@
-public abstract class Persoana {
+public abstract class Persoana implements Comparable<Client>{
     protected String nume;
     protected int varsta;
     protected String nationalitate;
@@ -39,4 +39,6 @@ public abstract class Persoana {
     public String toString() {
         return "Persoana:\n" + "Nume: " + nume + "\nVarsta: " + varsta + "\nNationalitate: " + nationalitate + "\nGen: " + gen;
     }
+
+    public abstract int compareTo(Client client);
 }

@@ -1,4 +1,4 @@
-public abstract class Articol {
+public abstract class Articol implements Comparable<Articol>{
     public String titlu;
     public Integer an_publicare;
     public String nume_autor;
@@ -35,9 +35,6 @@ public abstract class Articol {
     public void setAn_publicare(Integer an_publicare) {
         this.an_publicare = an_publicare;
     }
-    public int compareTo(Articol a) {
-        return this.titlu.compareTo(a.titlu);
-    }
     public void setNume_autor(String nume_autor) {
         this.nume_autor = nume_autor;
     }
@@ -46,6 +43,9 @@ public abstract class Articol {
     }
     public void setDisponibil(Boolean disponibil) {
         this.disponibil = disponibil;
+    }
+    public int compareTo(Articol other){
+        return this.zile_ramase.compareTo(other.getZile_ramase());
     }
     public String toString() {
         return "Titlu: " + titlu + "\nAn publicare: " + an_publicare + "\nNume autor: " + nume_autor + "\nZile ramase: " + zile_ramase + "\nDisponibil: " + disponibil;
