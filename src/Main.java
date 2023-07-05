@@ -1,7 +1,15 @@
+import java.sql.Connection;
+
 public class Main {
     public static void main(String[] args) {
         Biblioteca biblioteca = Biblioteca.getInstance();
-        biblioteca.addCarte(new Carte("Ion", 2010, "Liviu Rebreanu", 10, true, "Roman", "Humanitas", 1, "Ion da cu parul in cap"));
+        ConexiuneBD conexiuneBD = new ConexiuneBD();
+        Connection conn = conexiuneBD.connect();
+        conexiuneBD.creeazaTabelCarti();
+        Carte c1 = new Carte("Ion", 2010, "Liviu Rebreanu", 10, true, "Roman", "Humanitas", 1, "Ion da cu parul in cap");
+        conexiuneBD.adaugaCarte(c1);
+        biblioteca.addCarte(c1);
+        conexiuneBD.afiseazaCartiDisponibile();
         biblioteca.addCarte(new Carte("Enigma Otiliei", 2010, "George Calinescu", 10, true, "Roman", "Humanitas", 2, "Otilia e o..."));
         biblioteca.addCarte(new Carte("Morometii", 2010, "Marin Preda", 10, true, "Roman", "Humanitas", 3, "Cea mai functionala familie din romania"));
         biblioteca.addCarte(new Carte("Baltagul", 2010, "Mihail Sadoveanu", 10, true, "Roman", "Humanitas", 4, "Miorita cu extra steps"));

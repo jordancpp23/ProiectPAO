@@ -1,5 +1,6 @@
 public class bibliotecaService {
     Biblioteca biblioteca = Biblioteca.getInstance();
+    ConexiuneBD conexiuneBD = new ConexiuneBD();
     public void showCartiDisponibile() {
         boolean ok = false;
         for (Carte carte : biblioteca.getCarti()) {

@@ -34,4 +34,8 @@ public class Carte extends Articol{
     public void setDescriere(String descriere) {
         this.descriere = descriere;
     }
+
+    public String getDescriere() {
+        return descriere;
+    }
 }
