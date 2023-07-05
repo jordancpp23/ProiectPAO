@@ -107,4 +107,20 @@ public class ConexiuneBD {
                 }
             }
         }
+        public void stergeCarte(String numeCarte) {
+            Connection con = connect();
+            String deleteSQL = "DELETE FROM CARTI WHERE titlu = ?";
+            try (PreparedStatement pstmt = con.prepareStatement(deleteSQL)) {
+                pstmt.setString(1, numeCarte);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            } finally {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
 }

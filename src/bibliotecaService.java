@@ -30,6 +30,7 @@ public class bibliotecaService {
                 return;
             }
             biblioteca.addCarte(carte);
+            conexiuneBD.adaugaCarte(carte);
         }
     }
     public void AdaugaDVD(DVD dvd) {
@@ -151,6 +152,7 @@ public class bibliotecaService {
         for (Carte c : biblioteca.getCarti()) {
             if (c.getTitlu().equals(nume)) {
                 biblioteca.removeArticol(c);
+                conexiuneBD.stergeCarte(nume);
                 return;
             }
         }
@@ -187,6 +189,7 @@ public class bibliotecaService {
         for (Carte c : biblioteca.getCarti()) {
             if (c.getTitlu().equals(nume)) {
                 c.setDescriere(descriere);
+                conexiuneBD.modificaCarte(c);
                 return;
             }
         }
